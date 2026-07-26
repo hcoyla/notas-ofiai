@@ -1,0 +1,463 @@
+/* =========================================================
+   Portal de Notas — hoja de estilos
+   Paleta: "libreta de calificaciones"
+   ========================================================= */
+
+:root {
+  --ink: #16202b;
+  --ink-soft: #22303f;
+  --paper: #edf0f3;
+  --card: #ffffff;
+  --slate: #5b6472;
+  --slate-light: #8a93a1;
+  --brass: #b8873b;
+  --brass-dark: #96692a;
+  --ok: #2f6e4f;
+  --ok-bg: #e5f1ea;
+  --fail: #b3402c;
+  --fail-bg: #fbe9e5;
+  --neutral: #5b6472;
+  --neutral-bg: #e9ebee;
+  --border: #dfe3e8;
+  --radius: 14px;
+  --shadow: 0 1px 2px rgba(22, 32, 43, 0.06), 0 8px 24px rgba(22, 32, 43, 0.08);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  min-height: 100%;
+}
+
+body {
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(22,32,43,0.055) 1px, transparent 0);
+  background-size: 22px 22px;
+}
+
+h1, h2, h3, .display {
+  font-family: "Fraunces", "Times New Roman", serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+a { color: var(--brass-dark); }
+
+button, input {
+  font-family: inherit;
+}
+
+.mono {
+  font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+/* focus visibility for keyboard nav */
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+/* ---------------------------------------------------------
+   Marca
+   --------------------------------------------------------- */
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.brand .mark {
+  font-family: "Fraunces", serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 0.02em;
+}
+
+.brand .mark .accent { color: var(--brass); }
+
+.brand .sub {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--slate-light);
+}
+
+/* ---------------------------------------------------------
+   Login
+   --------------------------------------------------------- */
+.login-shell {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2.25rem 2rem 2rem;
+  border: 1px solid var(--border);
+}
+
+.login-card .brand {
+  justify-content: center;
+  margin-bottom: 0.15rem;
+}
+
+.login-card .lede {
+  text-align: center;
+  color: var(--slate);
+  font-size: 0.9rem;
+  margin: 0.15rem 0 1.75rem;
+}
+
+.field {
+  margin-bottom: 1.15rem;
+}
+
+.field label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--slate);
+  margin-bottom: 0.4rem;
+}
+
+.field input {
+  width: 100%;
+  padding: 0.7rem 0.85rem;
+  font-size: 0.98rem;
+  border: 1.5px solid var(--border);
+  border-radius: 9px;
+  background: #fcfdfe;
+  color: var(--ink);
+  transition: border-color 0.15s ease;
+}
+
+.field input:focus {
+  border-color: var(--brass);
+  outline: none;
+}
+
+.field .hint {
+  font-size: 0.76rem;
+  color: var(--slate-light);
+  margin-top: 0.35rem;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: var(--ink);
+  color: #fff;
+  border: none;
+  border-radius: 9px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.05s ease;
+}
+
+.btn-primary:hover { background: var(--ink-soft); }
+.btn-primary:active { transform: translateY(1px); }
+.btn-primary:disabled { opacity: 0.6; cursor: progress; }
+
+.form-error {
+  display: none;
+  background: var(--fail-bg);
+  color: var(--fail);
+  border: 1px solid rgba(179, 64, 44, 0.25);
+  border-radius: 9px;
+  padding: 0.65rem 0.8rem;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.form-error.show { display: block; }
+
+.login-foot {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.72rem;
+  color: var(--slate-light);
+  line-height: 1.5;
+}
+
+/* ---------------------------------------------------------
+   Dashboard shell
+   --------------------------------------------------------- */
+.topbar {
+  background: var(--ink);
+  color: #fff;
+  padding: 0.9rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.topbar .brand .sub { color: rgba(255,255,255,0.55); }
+
+.topbar .who {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.topbar .who span {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.85);
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1.5px solid rgba(255,255,255,0.3);
+  color: #fff;
+  padding: 0.4rem 0.85rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.12); }
+
+main.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.75rem 1.25rem 4rem;
+}
+
+.loading, .error-state {
+  text-align: center;
+  color: var(--slate);
+  padding: 3rem 1rem;
+}
+
+/* ---------------------------------------------------------
+   La "boleta" — tarjeta principal con borde de ticket
+   --------------------------------------------------------- */
+.boleta {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.ticket-edge {
+  height: 14px;
+  background:
+    linear-gradient(135deg, var(--paper) 50%, transparent 50%),
+    linear-gradient(45deg, transparent 50%, var(--paper) 50%);
+  background-size: 16px 16px;
+  background-position: left top;
+  background-color: var(--card);
+}
+
+.boleta-body {
+  padding: 1.6rem 1.75rem 1.9rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.boleta-id .eyebrow {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--brass-dark);
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.boleta-id h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.5rem;
+}
+
+.boleta-id .meta {
+  color: var(--slate);
+  font-size: 0.88rem;
+}
+
+.boleta-id .meta .dot {
+  margin: 0 0.4em;
+  color: var(--slate-light);
+}
+
+/* sello / stamp de promedio final */
+.sello {
+  flex-shrink: 0;
+  width: 118px;
+  height: 118px;
+  border-radius: 50%;
+  border: 3px dashed currentColor;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(-6deg);
+  text-align: center;
+}
+
+.sello .num {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 2.1rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.sello .of20 {
+  font-size: 0.65rem;
+  opacity: 0.75;
+  margin-top: 0.1rem;
+}
+
+.sello .cond {
+  margin-top: 0.35rem;
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.sello.ok { color: var(--ok); }
+.sello.fail { color: var(--fail); }
+.sello.neutral { color: var(--neutral); }
+
+/* ---------------------------------------------------------
+   Grid de notas
+   --------------------------------------------------------- */
+.section-label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--slate);
+  font-weight: 600;
+  margin: 0 0 0.75rem 0.1rem;
+}
+
+.grades-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1rem;
+}
+
+.grade-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.1rem 1.15rem;
+  box-shadow: var(--shadow);
+}
+
+.grade-card .head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.55rem;
+}
+
+.grade-card .label {
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.grade-card .weight {
+  font-size: 0.7rem;
+  color: var(--slate-light);
+  white-space: nowrap;
+}
+
+.grade-card .score {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.55rem;
+}
+
+.grade-card .score .max {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--slate-light);
+}
+
+.bar-track {
+  height: 7px;
+  background: var(--neutral-bg);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  background: var(--brass);
+  border-radius: 4px;
+}
+
+.grade-card .na {
+  color: var(--slate-light);
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.badge.ok { background: var(--ok-bg); color: var(--ok); }
+.badge.fail { background: var(--fail-bg); color: var(--fail); }
+.badge.neutral { background: var(--neutral-bg); color: var(--neutral); }
+
+.retirado-note {
+  background: var(--neutral-bg);
+  color: var(--slate);
+  border-radius: 12px;
+  padding: 1rem 1.15rem;
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+/* ---------------------------------------------------------
+   Responsive
+   --------------------------------------------------------- */
+@media (max-width: 480px) {
+  .boleta-body { padding: 1.3rem 1.1rem 1.5rem; }
+  .boleta-id h2 { font-size: 1.25rem; }
+  .sello { width: 96px; height: 96px; }
+  .sello .num { font-size: 1.7rem; }
+}

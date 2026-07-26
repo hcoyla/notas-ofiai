@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mis Notas · OFIAI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="mark">OF<span class="accent">IA</span>I</span>
+    <span class="sub">Portal de Notas</span>
+  </div>
+  <div class="who">
+    <span id="saludo"></span>
+    <button id="logout-btn" class="btn-ghost">Cerrar sesión</button>
+  </div>
+</header>
+
+<main class="container">
+  <div id="loading" class="loading">Cargando tus notas…</div>
+  <div id="error-state" class="error-state" style="display:none">
+    No pudimos cargar tus notas en este momento. Vuelve a intentarlo en unos minutos.
+  </div>
+
+  <div id="contenido" style="display:none">
+    <section class="boleta">
+      <div class="ticket-edge"></div>
+      <div class="boleta-body">
+        <div class="boleta-id">
+          <div class="eyebrow">Boleta de notas</div>
+          <h2 id="nombre-completo"></h2>
+          <div class="meta">
+            <span id="meta-curso"></span>
+            <span class="dot">·</span>
+            <span>Grupo <span id="meta-grupo"></span></span>
+            <span class="dot">·</span>
+            <span id="meta-periodo"></span>
+          </div>
+        </div>
+        <div id="sello" class="sello">
+          <div class="num"><span id="sello-num"></span></div>
+          <div class="of20">de 20</div>
+          <div id="sello-cond" class="cond"></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-label">Detalle de calificaciones</div>
+    <div id="grades-grid" class="grades-grid"></div>
+  </div>
+</main>
+
+<script src="js/dashboard.js"></script>
+</body>
+</html>
